@@ -1,17 +1,14 @@
 from vocabulary import *
-t = True
-f = False
 
 
 def exit():
-    print("Bro you sure? [Y/N]")
+    print("Bro, you sure? [Y/N]")
     while t:
         isExit = str(input())
-        for i in range(0, 11):
-            if isExit == yes[i]:
+        for i in range(0, len(yes)):
+            if isExit.lower() == yes[i]:
                 print("Ok, bye.")
                 quit()
-            i += 1
         else:
             print("Invalid. Valid values: Y/N/0/1")
 
