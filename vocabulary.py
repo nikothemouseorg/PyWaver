@@ -1,14 +1,12 @@
 from math import floor
 from random import randint
 from defWaves import *
-t = True
-yes = ["Yes", "YEs", "YES", "yES", "yeS", "yes", "yEs", "YeS", "y", "Y", "1"]
-no = ["No", "NO", "nO", "n", "N", "0"]
+yes = ["1", "yes", "y"]
+no = ["0", "no", "n"]
 
-selExit = ["4", "e", "E", "Exit", "EXit", "EXIt", "EXIT", "eXIT", "exIT", "exiT", "exit", "ExIt", "eXiT", "eXIt",
-           "ExiT"]
+selExit = ["4", "e", "exit"]
 
-selCombine = ["1", "c", "C"]
+selCombine = ["1", "c", "combine"]
 
 newWave = [0, 0, 0, 0, 0, 0, 0, 0,
            0, 0, 0, 0, 0, 0, 0, 0,
