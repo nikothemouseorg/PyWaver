@@ -6,11 +6,10 @@ f = False
 def exit():
     print("Bro you sure? [Y/N]")
     while t:
-        isExit = ""
-        isExit = input()
+        isExit = str(input())
         for i in range(0, 11):
             if isExit == yes[i]:
-                print("Ok bye.")
+                print("Ok, bye.")
                 quit()
             i += 1
         else:
