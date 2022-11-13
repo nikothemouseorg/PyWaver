@@ -1,8 +1,9 @@
 from math import floor
 from random import randint
 from defWaves import *
-yes = ["1", "yes", "y"]
-no = ["0", "no", "n"]
+t = True
+yes = ["yes", "y", "1"]
+no = ["no", "n", "0"]
 
 selExit = ["4", "e", "exit"]
 
@@ -17,8 +18,8 @@ newWave = [0, 0, 0, 0, 0, 0, 0, 0,
            0, 0, 0, 0, 0, 0, 0, 0,
            0, 0, 0, 0, 0, 0, 0, 0, ]
 
-waves = ["Saw", "DblSaw", "Square", "Square37p5", "Square25", "Square12p5", "Sine", "Triangle"]
 
+waves = ["Saw", "DblSaw", "Square", "Square37p5", "Square25", "Square12p5", "Sine", "Triangle"]
 
 def generate():
     for i6 in range(0, 64):
@@ -36,7 +37,8 @@ def generate():
     print("Here you go, a fresh new generated wave!")
 
 
-def combine(wv1, wv2):
+def combine(wv1, wv1amp, wv2, wv2amp, amp, centered):
+    midVal = 0
     if wv1 == waves[6]:
         wv1 = Sine
     if wv2 == waves[6]:
@@ -69,11 +71,22 @@ def combine(wv1, wv2):
         wv1 = Square12p5
     if wv2 == waves[5]:
         wv2 = Square12p5
+    if amp == "":
+        amp = 1
+    for i11 in range(0, len(wv1)):
+        wv1[i11] = floor(wv1[i11] * wv1amp)
+    for i12 in range(0, len(wv2)):
+        wv2[i12] = floor(wv2[i12] * wv2amp)
     for i5 in range(0, 64):
         preadd = wv1[i5] + wv2[i5]
         add = floor(preadd / 2)
-        newWave[i5] = add
+        newWave[i5] = floor(add * amp)
         print(add)
+        newWave[i5] = floor(newWave[i5] * amp)
+    if centered == 1:
+        for i13 in range(0, len(newWave)):
+            midVal = midVal + newWave[i13]
+        midVal = floor(midVal / (2 * len(newWave)))
     print(newWave[0],  newWave[1], newWave[2],  newWave[3], newWave[4],  newWave[5], newWave[6],  newWave[7],
           newWave[8],  newWave[9], newWave[10],  newWave[11], newWave[12],  newWave[13], newWave[14],  newWave[15],
           newWave[16],  newWave[17], newWave[18],  newWave[19], newWave[20],  newWave[21], newWave[22],  newWave[23],
@@ -82,6 +95,7 @@ def combine(wv1, wv2):
           newWave[40],  newWave[41], newWave[42],  newWave[43], newWave[44],  newWave[45], newWave[46],  newWave[47],
           newWave[48],  newWave[49], newWave[50],  newWave[51], newWave[52],  newWave[53], newWave[54],  newWave[55],
           newWave[56],  newWave[57], newWave[58],  newWave[59], newWave[60],  newWave[61], newWave[62],  newWave[63])
+    print(f"{midVal} is middle")
     print("Here you go, a neat combination!")
 
 
@@ -112,4 +126,4 @@ def waitselection():
                 combine(wave1[0], wave2[0])
 
 
-waitselection()
+combine(Square, 1, DblSaw, 1, 3, 1)
