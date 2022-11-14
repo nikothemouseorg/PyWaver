@@ -1,6 +1,7 @@
 from math import floor
 from random import randint
 from defWaves import *
+
 t = True
 yes = ["yes", "y", "1"]
 no = ["no", "n", "0"]
@@ -19,13 +20,17 @@ newWave = [0, 0, 0, 0, 0, 0, 0, 0,
            0, 0, 0, 0, 0, 0, 0, 0, ]
 
 
+
 waves = ["Saw", "DblSaw", "Square", "Square37p5", "Square25", "Square12p5", "Sine", "Triangle"]
 
-def generate():
+
+def generate():                     # This one goes brr and does random.
+    printedWave = ""
     for i6 in range(0, 64):
         add2 = randint(0, 63)
         newWave[i6] = add2
         i6 += 1
+        # printedWave += (f"{newWave[i6]}" + printedWave)     # This part of code floods out memory
     print(newWave[0], newWave[1], newWave[2], newWave[3], newWave[4], newWave[5], newWave[6], newWave[7], newWave[8],
           newWave[9], newWave[10], newWave[11], newWave[12], newWave[13], newWave[14], newWave[15], newWave[16],
           newWave[17], newWave[18], newWave[19], newWave[20], newWave[21], newWave[22], newWave[23], newWave[24],
@@ -37,7 +42,7 @@ def generate():
     print("Here you go, a fresh new generated wave!")
 
 
-def combine(wv1, wv1amp, wv2, wv2amp, amp, centered):
+def combine(wv1, wv1amp, wv2, wv2amp, amp, centered):       # Now we go defining function, later to be used
     midVal = 0
     if wv1 == waves[6]:
         wv1 = Sine
@@ -126,4 +131,4 @@ def waitselection():
                 combine(wave1[0], wave2[0])
 
 
-combine(Square, 1, DblSaw, 1, 3, 1)
+generate()
